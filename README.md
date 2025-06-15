@@ -32,13 +32,12 @@ I chose **plain HTML, CSS, and JavaScript** without any heavy frameworks to keep
 ## 📁 Folder Structure
 
 kyara-homepage/
-│
-├── index.html → Main homepage file
+├── index.html           → Main homepage file
 ├── css/
-│ └── style.css → All custom styles (if external)
+│   └── style.css        → All custom styles (if external)
 ├── js/
-│ └── script.js
-└── README.md → Project description and instructions
+│   └── script.js        → JavaScript logic (mobile menu, form validation)
+└── README.md            → Project description and instructions
 
 ---
 
