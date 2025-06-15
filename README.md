@@ -56,7 +56,7 @@ kyara-homepage/
 A live version of this homepage is available here:
 
 **GitHub Pages**  
-`[https://aadesh0706.github.io/kyara-beverages-website]`
+[Site](https://aadesh0706.github.io/kyara-beverages-website)
 
 ---
 
