@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kyara Beverages - Refreshment, Reimagined</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f6f9f1 0%, #f0f4e9 100%);
+      color: #2a2a2a;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      -webkit-font-feature-settings: "liga", "clig", "calt";
+      font-feature-settings: "liga", "clig", "calt";
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 12px;
+      object-fit: cover;
+      pointer-events: none;
+      user-select:none;
+    }
+    a {
+      color: #2a7f62;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #1f6047;
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin: 0 0 0.5rem 0;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    p {
+      margin: 0 0 1rem 0;
+      line-height: 1.75;
+      color: #3c3c3c;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      padding: 0 1.5rem;
+      margin: 0 auto;
+    }
+    /* Smooth section spacing */
+    section {
+      padding: 4rem 0;
+    }
+    /* ================= Hero Banner ================= */
+    header {
+      position: relative;
+      min-height: 90vh;
+      background: linear-gradient(
+          rgba(51, 117, 86, 0.45),
+          rgba(26, 72, 51, 0.85)
+        ),
+        url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f9cbcd4f-e427-422a-bfd7-e7b8d1f7cadb.png') no-repeat center center/cover;
+      color: #f0f4e9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      overflow: hidden;
+      box-shadow: inset 0 0 120px 45px rgba(0,0,0,0.35);
+    }
+    header .logo {
+      font-weight: 900;
+      font-size: 3.8rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      user-select: none;
+      filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.7));
+      text-shadow: 0 0 40px #a7d29a;
+      font-style: italic;
+      transform: skewX(-14deg);
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      max-width: 650px;
+      margin: 0 auto 3rem;
+      line-height: 1.15;
+      text-shadow: 0 0 22px rgba(0, 0, 0, 0.55);
+      position: relative;
+      padding-bottom: 0.7rem;
+      letter-spacing: 0.06em;
+      animation: fadeInUp 1.4s ease forwards;
+      font-feature-settings: "liga","kern";
+      text-transform: capitalize;
+      font-weight: 800;
+    }
+    /* Underline */
+    header h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 5px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #a1de9a, #368f53);
+      box-shadow: 0 0 16px #5caf79aa;
+      animation: fadeInWidth 1.5s ease forwards;
+      opacity: 0;
+      animation-delay: 2s;
+    }
+    @keyframes fadeInWidth {
+      0% {
+        opacity: 0;
+        width: 0;
+      }
+      100% {
+        opacity: 1;
+        width: 140px;
+      }
+    }
+    /* Subtle fade-in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* ================= 3D cube ================= */
+    .cube-container {
+      margin-top: 3rem;
+      width: 140px;
+      height: 140px;
+      perspective: 900px;
+      user-select: none;
+      filter:
+        drop-shadow(0 0 8px #6dbd72cc)
+        drop-shadow(0 0 30px #49ab60cc);
+      transition: filter 0.3s ease;
+    }
+    .cube-container:hover {
+      filter:
+        drop-shadow(0 0 20px #4bbf8cdd)
+        drop-shadow(0 0 40px #4bbf8cdd);
+    }
+    .cube {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spinCube 18s linear infinite;
+      border-radius: 10px;
+      cursor: grab;
+      will-change: transform;
+    }
+    .cube:active {
+      cursor: grabbing;
+      animation-play-state: paused;
+    }
+    .cube div {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, #8ec07c, #27674e);
+      border: 5px solid #1a4833;
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3.3rem;
+      color: #ddf3d9;
+      font-weight: 900;
+      user-select: none;
+      text-shadow: 0 0 12px #aadd99cc;
+      transition: background 0.3s ease;
+    }
+    .cube div:hover {
+      background: linear-gradient(135deg, #a1d79a, #3d7f56);
+      box-shadow: 0 0 20px 6px #8ade82cc;
+    }
+    .cube .front  { transform: translateZ(70px); }
+    .cube .back   { transform: rotateY(180deg) translateZ(70px); }
+    .cube .right  { transform: rotateY(90deg) translateZ(70px); }
+    .cube .left   { transform: rotateY(-90deg) translateZ(70px); }
+    .cube .top    { transform: rotateX(90deg) translateZ(70px); }
+    .cube .bottom { transform: rotateX(-90deg) translateZ(70px); }
+    @keyframes spinCube {
+      from { transform: rotateX(0) rotateY(0);}
+      to { transform: rotateX(360deg) rotateY(360deg);}
+    }
+
+    /* ================= About Section ================= */
+    #about {
+      background: #f0f4e9;
+      color: #1a4833;
+      text-align: center;
+      padding: 6rem 3rem;
+      border-radius: 24px;
+      box-shadow:
+        inset 0 0 32px #a7db9a44,
+        0 16px 36px rgba(61, 127, 72, 0.22);
+      margin-bottom: 7rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.4rem;
+      line-height: 1.9;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: 0.015em;
+      user-select:none;
+    }
+    #about h2 {
+      font-size: 3.3rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px #5caf797a;
+      font-style: normal;
+    }
+
+    /* ================= Products Section ================= */
+    #products {
+      max-width: 1200px;
+      margin: 0 auto 8rem auto;
+    }
+    #products h2 {
+      font-size: 3.25rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: #27674e;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px #5caf797a;
+      user-select:none;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+      padding: 0 1rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 32px;
+      box-shadow:
+        0 14px 36px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 0.35s cubic-bezier(.21,.9,.46,1),
+        box-shadow 0.35s cubic-bezier(.21,.9,.46,1);
+      cursor: pointer;
+      position: relative;
+      user-select:none;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      z-index: 0;
+      background: linear-gradient(135deg, #a8dba8, #236535);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events:none;
+    }
+    .product-card:hover::before,
+    .product-card:focus-within::before {
+      opacity: 0.28;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-18px);
+      box-shadow:
+        0 36px 70px rgba(38, 106, 62, 0.32);
+      outline: none;
+      z-index: 2;
+    }
+    .product-image-container {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      border-bottom: 3.2px solid #8ec07c;
+      position: relative;
+      z-index: 1;
+      box-shadow: inset 0 -4px 12px rgba(142,192,124,0.3);
+      transition: box-shadow 0.4s ease;
+    }
+    .product-card:hover .product-image-container,
+    .product-card:focus-within .product-image-container {
+      box-shadow: inset 0 0 40px #79aa5e99;
+    }
+    .product-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(.42,.09,.38,1.15);
+      will-change: transform;
+      pointer-events:none;
+      user-select:none;
+    }
+    .product-card:hover .product-image-container img,
+    .product-card:focus-within .product-image-container img {
+      transform: scale(1.11) rotate(1.3deg);
+      filter: brightness(1.1) saturate(1.1);
+    }
+    .product-content {
+      flex-grow: 1;
+      padding: 2.4rem 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+    }
+    .product-name {
+      font-weight: 900;
+      font-size: 1.85rem;
+      margin-bottom: 1rem;
+      color: #27674e;
+      letter-spacing: 0.03em;
+      user-select:none;
+    }
+    .product-desc {
+      font-size: 1.12rem;
+      color: #4b5c40;
+      line-height: 1.62;
+      flex-grow: 1;
+      font-weight: 600;
+      user-select:none;
+    }
+    /* Adding a subtle shiny glare effect on product cards */
+    .product-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -70%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+      transform: rotate(25deg);
+      z-index: 4;
+      transition: left 0.75s ease;
+      opacity: 0;
+      pointer-events: none;
+      border-radius: 32px;
+    }
+    .product-card:hover::after,
+    .product-card:focus-within::after {
+      left: 90%;
+      opacity: 0.65;
+      transition: left 0.75s ease;
+    }
+
+    /* ================= Contact Section ================= */
+    #contact {
+      background: linear-gradient(135deg, #c0e9c9 0%, #e6f3e9 100%);
+      color: #275339;
+      padding: 4rem 1rem 8rem;
+      border-radius: 24px 24px 0 0;
+      box-shadow: inset 0 12px 45px #a6d1a633;
+    }
+    #contact h2 {
+      font-size: 3.3rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #225336;
+      text-shadow: 0 0 6px #81ce821a;
+      user-select:none;
+    }
+    form {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 3rem 3rem 4rem;
+      border-radius: 34px;
+      box-shadow: 0 16px 48px rgba(38, 103, 61, 0.22);
+      transition: box-shadow 0.3s ease;
+    }
+    form:focus-within {
+      box-shadow: 0 18px 60px rgba(38, 103, 61, 0.35);
+    }
+    .form-group {
+      position: relative;
+      margin-bottom: 2.8rem;
+      user-select:none;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      font-size: 1.15rem;
+      padding: 1.3rem 1.2rem 0.3rem 1.2rem;
+      border: 3.2px solid #a3c59f;
+      border-radius: 20px;
+      background: transparent;
+      color: #275339;
+      outline: none;
+      resize: vertical;
+      transition:
+        border-color 0.35s ease,
+        box-shadow 0.25s ease;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      user-select:text;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #4f9361;
+      box-shadow: 0 0 12px #61bf6eaa;
+      background: #f3faef;
+    }
+    label {
+      position: absolute;
+      top: 1.3rem;
+      left: 1.2rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #699e77;
+      pointer-events: none;
+      background-color: white;
+      padding: 0 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      user-select: none;
+      letter-spacing: 0.04em;
+      font-variant: small-caps;
+      font-style: oblique;
+      text-shadow: 0 0 3px #8bba7a8a;
+    }
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:focus + label,
+    textarea:not(:placeholder-shown) + label {
+      top: -0.85rem;
+      left: 1rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #357343;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 6px rgba(43,108,58,0.3);
+    }
+    textarea {
+      min-height: 120px;
+      line-height: 1.5;
+      font-feature-settings: "liga","calt","kern";
+    }
+    button[type="submit"] {
+      background: #27674e;
+      color: white;
+      font-size: 1.3rem;
+      padding: 1.15rem 4rem;
+      border: none;
+      border-radius: 60px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      cursor: pointer;
+      align-self: center;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 12px 32px rgba(39, 103, 67, 0.52);
+      transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.15s ease;
+      user-select:none;
+      position: relative;
+      overflow: hidden;
+      font-feature-settings: "liga","calt","kern";
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 10px #79ad6f;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: #1b472f;
+      box-shadow: 0 18px 48px rgba(27, 71, 47, 0.72);
+      outline: none;
+      transform: scale(1.04);
+    }
+    button[type="submit"]:active {
+      transform: scale(0.96);
+      box-shadow: 0 8px 20px rgba(27, 71, 47, 0.52);
+    }
+    /* Ripple effect */
+    button[type="submit"]:focus-visible {
+      outline: 3px solid #8ed192cc;
+      outline-offset: 4px;
+    }
+
+    /* Responsive Typography and Layout */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.2rem;
+        max-width: 95vw;
+      }
+      .cube-container {
+        width: 100px;
+        height: 100px;
+      }
+      .cube, .cube div {
+        width: 100px;
+        height: 100px;
+      }
+      .product-list {
+        grid-template-columns: 1fr !important;
+        padding: 0 0;
+      }
+      .product-card {
+        width: 100%;
+        margin: 0 auto 2.75rem auto;
+        border-radius: 24px;
+      }
+      form {
+        padding: 2rem 1.5rem 3rem;
+        border-radius: 28px;
+      }
+      button[type="submit"] {
+        padding: 1rem 3rem;
+        font-size: 1.15rem;
+      }
+      #about {
+        font-size: 1.2rem;
+        padding: 3rem 1.5rem 3rem 1.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .product-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner" aria-label="Kyara Beverages Hero Banner">
+    <div class="logo" aria-label="Kyara Beverages logo">KYARA</div>
+    <h1 tabindex="0">Refreshment, Reimagined</h1>
+    <div class="cube-container" aria-hidden="true">
+      <div class="cube" aria-label="Rotating cube with letters spelling Kyara B">
+        <div class="front" aria-hidden="true">K</div>
+        <div class="back" aria-hidden="true">Y</div>
+        <div class="right" aria-hidden="true">A</div>
+        <div class="left" aria-hidden="true">R</div>
+        <div class="top" aria-hidden="true">A</div>
+        <div class="bottom" aria-hidden="true">B</div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="container" aria-label="Main content">
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About Kyara Beverages</h2>
+      <p>
+        At Kyara Beverages, we’re reimagining refreshment with millet-based fruit drinks.
+        Rooted in tradition and powered by innovation, we craft drinks that are nutritious,
+        refreshing, and real—bringing authentic taste to every sip.
+      </p>
+    </section>
+
+    <section id="products" aria-labelledby="products-title">
+      <h2 id="products-title">Our Products</h2>
+      <div class="product-list">
+        <article class="product-card" tabindex="0" aria-label="Mango Millet Refresh drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9448127c-4498-4799-b129-d4e9a91db706.png"
+              alt="Bottle of Mango Millet Refresh drink with yellow mango color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Mango Millet Refresh</h3>
+            <p class="product-desc">
+              A tropical mango-infused millet drink, combining sweetness and nutrition perfectly.
+            </p>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="Berry Millet Splash drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bfa6d557-9ebb-4ce7-8544-0435a176d4a0.png"
+              alt="Bottle of Berry Millet Splash drink with deep red berry color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Berry Millet Splash</h3>
+            <p class="product-desc">
+              A burst of juicy berries combined with millet for a refreshing antioxidant boost.
+            </p>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="Citrus Millet Zest drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ea9ebd2f-efe4-4dc2-abad-e81f3a59cfed.png"
+              alt="Bottle of Citrus Millet Zest drink with citrus orange color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Citrus Millet Zest</h3>
+            <p class="product-desc">
+              A zesty citrus millet blend offering a vibrant and invigorating refreshment.
+            </p>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="Pineapple Millet Breeze drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c146db82-28e9-485b-b99f-f8ead6ffa430.png"
+              alt="Bottle of Pineapple Millet Breeze drink with bright yellow pineapple color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Pineapple Millet Breeze</h3>
+            <p class="product-desc">
+              A tropical pineapple and millet blend for a fresh, breezy refreshment.
+            </p>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="Guava Millet Glow drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/414e923d-af04-4af1-87bc-a1cb62bc9940.png"
+              alt="Bottle of Guava Millet Glow drink with pink guava color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Guava Millet Glow</h3>
+            <p class="product-desc">
+              A glowing guava-infused millet drink that's vibrant and full of flavor.
+            </p>
+          </div>
+        </article>
+        <article class="product-card" tabindex="0" aria-label="Lemon Millet Shine drink">
+          <div class="product-image-container">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6e4bbd69-b7d7-4a8d-bff5-57df35a010a7.png"
+              alt="Bottle of Lemon Millet Shine drink with bright lemon yellow color and millet grains"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">Lemon Millet Shine</h3>
+            <p class="product-desc">
+              A sharp, citrusy millet drink with zesty lemon and a bright shine in every sip.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Get in Touch</h2>
+      <form aria-label="Contact Form" novalidate>
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder=" " required aria-required="true" />
+          <label for="name">Name</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder=" " required aria-required="true" />
+          <label for="email">Email</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder=" " required aria-required="true" rows="5"></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" aria-label="Send message">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Contact form submission with validation feedback and alert
+    const form = document.querySelector('form');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // Simple validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields before submitting.');
+        return;
+      }
+      alert(`Thank you ${name}, your message has been received!`);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+
