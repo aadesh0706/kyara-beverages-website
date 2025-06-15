@@ -29,15 +29,15 @@ I chose **plain HTML, CSS, and JavaScript** without any heavy frameworks to keep
 
 ---
 
-## 📁 Folder Structure
+### 📁 Folder Structure
 
-kyara-homepage/
-├── index.html           → Main homepage file
-├── css/
-│   └── style.css        → All custom styles (if external)
-├── js/
-│   └── script.js        → JavaScript logic (mobile menu, form validation)
-└── README.md            → Project description and instructions
+| Path               | Description                                      |
+|--------------------|--------------------------------------------------|
+| `index.html`       | Main homepage file                               |
+| `css/style.css`    | All custom styles (external CSS)                 |
+| `js/script.js`     | JavaScript logic (mobile menu, form validation)  |
+| `images`           | Used direct Google Storage links                 |
+| `README.md`        | Project description and instructions             |
 
 ---
 
