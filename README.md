@@ -70,8 +70,7 @@ A live version of this homepage is available here:
 
 ## Contact
 
-📧 aadeshgulumbe3@gmail.com  
-📍 Location: Remote / Hybrid  
+📧 aadeshgulumbe3@gmail.com   
 🌐 '[https://www.aadeshgulumbe.live]'
 
 ---
